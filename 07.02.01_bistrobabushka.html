@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07.02.01_bistrobabushka</title>
+    <style>
+
+        article {
+            border: 1px solid #333;
+            padding: 10px;
+        }
+
+
+        img {
+            max-width: 30%;
+        }
+
+        section {
+            width: 90vw;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+   <section>
+   </section>
+
+   <template>
+       <article>
+           <h2></h2>
+           <img src="" alt="">
+           <h2 class="navn"></h2>
+           <p class="kort"></p>
+           <p class="pris"></p>
+
+       </article>
+   </template>
+
+
+
+    <script>
+    let container = document.querySelector("section");
+    let temp = document.querySelector("template");
+
+        const link = "https://spreadsheets.google.com/feeds/list/17Dd7DvkPaFamNUdUKlrFgnH6POvBJXac7qyiS6zNRw0/od6/public/values?alt=json";
+
+        async function hentdata() {
+            const respons = await fetch(link);
+            const json = await respons.json();
+            vis(json);
+        }
+
+        function vis(menu){
+            console.log(menu);
+
+            menu.feed.entry.forEach(ret => {
+                const klon = temp.cloneNode(true).content;
+                klon.querySelector("img").src = ret.gsx$billede.$t;
+                klon.querySelector(".navn").textContent = ret.gsx$navn.$t;
+                klon.querySelector(".kort").textContent = ret.gsx$kort.$t;
+                klon.querySelector(".pris").textContent = "Pris: " + ret.gsx$pris.$t + ",-";
+                container.appendChild(klon);
+            })
+        }
+
+
+
+        hentdata();
+
+    </script>
+</body>
+</html>
