@@ -31,7 +31,15 @@
 
 <body>
 
-   <section>
+   <header>
+       <button class="filter valgt" data-kategori="alle">ALLE</button>
+       <button class="filter" data-kategori="foretter">FORETTER</button>
+       <button class="filter" data-kategori="hovedretter">HOVEDRETTER</button>
+       <button class="filter" data-kategori="sideorders">TILBEHØR</button>
+       <button class="filter" data-kategori="drikkevarer">DRIKKEVARER</button>
+   </header>
+
+   <section class="list">
    </section>
 
    <template>
@@ -48,30 +56,38 @@
 
 
     <script>
-    let container = document.querySelector("section");
-    let temp = document.querySelector("template");
+//    let container = document.querySelector("section");
+    let filter = "forretter";
+    let menu;
+    document.addEventListener("DomContentLoaded", hentdata)
 
         const link = "https://spreadsheets.google.com/feeds/list/17Dd7DvkPaFamNUdUKlrFgnH6POvBJXac7qyiS6zNRw0/od6/public/values?alt=json";
 
         async function hentdata() {
-            const respons = await fetch(link);
-            const json = await respons.json();
-            vis(json);
+            const JSONData = await fetch(link);
+            menu = await JSONData.json();
+            visMenu();
         }
 
-        function vis(menu){
-            console.log(menu);
+        function visMenu(){
+
+
+            const temp = document.querySelector("template");
+            const list = document.querySelector(".list");
 
             menu.feed.entry.forEach(ret => {
+                if (filter == ret.gsx$kategori.$t.toLowerCase()){
+                console.log(ret);
                 const klon = temp.cloneNode(true).content;
                 klon.querySelector("img").src = ret.gsx$billede.$t;
                 klon.querySelector(".navn").textContent = ret.gsx$navn.$t;
                 klon.querySelector(".kort").textContent = ret.gsx$kort.$t;
                 klon.querySelector(".pris").textContent = "Pris: " + ret.gsx$pris.$t + ",-";
-                container.appendChild(klon);
+//                container.appendChild(klon);
+                list.appendChild(klon);
+                }
             })
         }
-
 
 
         hentdata();
