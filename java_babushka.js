@@ -69,7 +69,13 @@ function visPopup(ret) {
     popup.querySelector(".beskrivelse").textContent = "Beskrivelse: " + ret.gsx$lang.$t;
     popup.querySelector(".oprindelse").textContent = "Oprindelse: " + ret.gsx$oprindelse.$t;
     popup.querySelector(".pris").textContent = "Pris: " + ret.gsx$pris.$t + ",-";
+    popup.querySelector("img").src = "imgs/small/" + ret.gsx$billede.$t + "-sm.jpg";
+
+
 }
+
+document.querySelector(".luk").addEventListener("click", () => popup.style.display = "none");
+
 
 
 
@@ -104,5 +110,7 @@ function filterBTNs() {
 }
 
 
-
 hentData();
+
+
+
