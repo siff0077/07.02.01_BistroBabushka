@@ -1,4 +1,4 @@
-article {
+#ret {
 
     border: 1px solid #333;
 
@@ -6,6 +6,32 @@ article {
 
 }
 
+#popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: azure(0, 0, 0, .8);
+    /*display: none;*/
+}
+
+#popup article {
+    width: 80vw;
+    height: 80vh;
+    margin: 4rem auto;
+    background-color: white;
+}
+
+#popup .luk {
+    position: fixed;
+    top: 0;
+    right: 1rem;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    padding: .1rem;
+}
 
 
 img {
@@ -16,7 +42,7 @@ img {
 
 
 
-section {
+.container {
 
     width: 90vw;
 
@@ -39,7 +65,6 @@ header {
     display: flex;
 
 }
-
 
 
 button {

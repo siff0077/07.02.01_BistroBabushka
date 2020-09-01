@@ -56,12 +56,19 @@ function vis(menu) {
 
             klon.querySelector("img").src = "imgs/small/" + ret.gsx$billede.$t + "-sm.jpg";
 
+            klon.querySelector("article").addEventListener("click", () => visPopup(ret));
+
             container.appendChild(klon);
-
         }
-
     })
+}
 
+function visPopup(ret) {
+    popup.style.display = "block";
+    popup.querySelector("h2").textContent = ret.gsx$navn.$t;
+    popup.querySelector(".beskrivelse").textContent = "Beskrivelse: " + ret.gsx$lang.$t;
+    popup.querySelector(".oprindelse").textContent = "Oprindelse: " + ret.gsx$oprindelse.$t;
+    popup.querySelector(".pris").textContent = "Pris: " + ret.gsx$pris.$t + ",-";
 }
 
 
