@@ -5,120 +5,56 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>07.02.01_bistrobabushka</title>
-    <style>
-
-
-        article {
-            border: 1px solid #333;
-            padding: 10px;
-        }
-
-
-        img {
-            max-width: 30%;
-        }
-
-        section {
-            width: 90vw;
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-gap: 10px;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        }
-
-        header {
-            display: flex;
-        }
-
-        button {
-            align-items: center;
-            background-color: #39BDA6;
-            width: 100px;
-            height: 30px;
-            margin: 5px 5px;
-            align-items: center;
-            justify-content: space-around;
-        }
-
-    </style>
+    <link rel="stylesheet" href="stylesheet_babushka.css">
 </head>
+
+
 
 <body>
 
+
+
     <header>
+
         <button class="filter valgt" data-kategori="alle">ALLE</button>
-        <button class="filter" data-kategori="foretter">FORETTER</button>
+
+        <button class="filter" data-kategori="forretter">FORRETTER</button>
+
         <button class="filter" data-kategori="hovedretter">HOVEDRETTER</button>
+
         <button class="filter" data-kategori="sideorders">TILBEHØR</button>
+
         <button class="filter" data-kategori="drikkevarer">DRIKKEVARER</button>
+
     </header>
 
-    <section class="list">
+
+
+    <section class="container">
+
     </section>
 
+
+
     <template>
-        <article>
+
+        <article id="ret">
+
             <h2></h2>
+
             <img src="" alt="">
+
             <h2 class="navn"></h2>
+
             <p class="kort"></p>
+
             <p class="pris"></p>
 
         </article>
+
     </template>
 
-
-
-    <script>
-        let filter = "alle";
-        let menu;
-        document.addEventListener("DomContentLoaded", hentdata)
-
-        const link = "https://spreadsheets.google.com/feeds/list/17Dd7DvkPaFamNUdUKlrFgnH6POvBJXac7qyiS6zNRw0/od6/public/values?alt=json";
-
-        async function hentdata() {
-            const JSONData = await fetch(link);
-            menu = await JSONData.json();
-            addEventListenersToButtons();
-            visMenu();
-        }
-
-        function visMenu() {
-
-
-            const temp = document.querySelector("template");
-            const list = document.querySelector(".list");
-            list.innerHTML = "";
-
-            menu.feed.entry.forEach(ret => {
-                if (filter == "alle" || filter == ret.gsx$kategori.$t) {
-                    console.log(ret);
-                    const klon = temp.cloneNode(true).content;
-                    klon.querySelector("img").src = ret.gsx$billede.$t;
-                    klon.querySelector(".navn").textContent = ret.gsx$navn.$t;
-                    klon.querySelector(".kort").textContent = ret.gsx$kort.$t;
-                    klon.querySelector(".pris").textContent = "Pris: " + ret.gsx$pris.$t + ",-";
-                    list.appendChild(klon);
-                }
-            })
-        }
-
-        function addEventListenersToButtons() {
-            document.querySelectorAll(".filter").forEach((btn) => {
-                btn.addEventListener("click", filterBTNs);
-            });
-        }
-
-        function filterBTNs() {
-            filter = this.datatset.kategori;
-            visMenu();
-        }
-
-
-        hentdata();
-
-    </script>
+    <script src="java_babushka.js"></script>
 </body>
 
 </html>
