@@ -82,7 +82,7 @@ function filterBTNs() {
 
     filter = this.dataset.kategori;
 
-    // document.querySelector("h2").textContent = this.textContent;
+    document.querySelector(".kategorinavn").textContent = this.textContent;
 
     document.querySelectorAll(".filter").forEach((btn) => {
 
