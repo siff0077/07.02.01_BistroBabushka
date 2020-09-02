@@ -54,7 +54,7 @@ article {
 
    <section id="popup">
        <article class="ret">
-           <button class="luk"></button>
+           <button class="luk">X</button>
            <h2></h2>
            <img src="" alt="">
            <p class="beskrivelse"></p>
@@ -117,10 +117,9 @@ async function hentData() {
     popup.querySelector(".oprindelse").textContent = "Oprindelse: " + ret.gsx$oprindelse.$t;
     popup.querySelector(".pris").textContent = "Pris: " + ret.gsx$pris.$t + ",-";
     popup.querySelector("img").src = "imgs/small/" + ret.gsx$billede.$t + "-sm.jpg";
-
-
 }
 
+        document.querySelector(".luk").addEventListener("click", () => history.back());
 
 
         hentData();
