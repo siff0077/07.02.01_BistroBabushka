@@ -4,10 +4,127 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>07.02.01_babushka_newpage</title>
-    <link rel="stylesheet" href="stylesheet_babushka_newpage.css">
+    <style>
+
+img {
+    width: 100%;
+    height: 60%;
+    object-fit: contain;
+}
+
+#popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    display: none;
+}
+
+article {
+    width: 80vw;
+    height: 80vh;
+    margin: 4rem auto;
+    background-color: darkseagreen;
+}
+
+.luk {
+    position: fixed;
+    top: 0;
+    right: 1rem;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    padding: .1rem;
+    cursor: pointer;
+}
+
+    </style>
+
+
+
+
+
 </head>
 
 <body>
-    <script src="java_babushka_newpage.js"></script>
+
+   <section class="container"></section>
+
+   <section id="popup">
+       <article class="ret">
+           <button class="luk"></button>
+           <h2></h2>
+           <img src="" alt="">
+           <p class="beskrivelse"></p>
+           <p class="oprindelse"></p>
+            <p class="pris"></p>
+       </article>
+   </section>
+
+
+
+
+
+
+    <script>
+
+     const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get("id");
+        console.log(id);
+
+let menu;
+
+const popup = document.querySelector("#popup");
+document.addEventListener("DOMContentLoaded", hentData)
+
+
+let container = document.querySelector("section");
+
+let json;
+
+
+
+
+const link = "https://spreadsheets.google.com/feeds/list/17Dd7DvkPaFamNUdUKlrFgnH6POvBJXac7qyiS6zNRw0/od6/public/values?alt=json";
+
+async function hentData() {
+    const respons = await fetch(link);
+    json = await respons.json();
+    vis(json);
+
+}
+
+        function vis(menu) {
+    console.log(menu);
+    container.innerHTML = "";
+    menu.feed.entry.forEach(ret => {
+        if (id == ret.gsx$id.$t) {
+
+            visPopup(ret)
+
+        }
+    })
+}
+
+  function visPopup(ret){
+      console.log(ret);
+
+    popup.style.display = "block";
+    popup.querySelector("h2").textContent = ret.gsx$navn.$t;
+    popup.querySelector(".beskrivelse").textContent = "Beskrivelse: " + ret.gsx$lang.$t;
+    popup.querySelector(".oprindelse").textContent = "Oprindelse: " + ret.gsx$oprindelse.$t;
+    popup.querySelector(".pris").textContent = "Pris: " + ret.gsx$pris.$t + ",-";
+    popup.querySelector("img").src = "imgs/small/" + ret.gsx$billede.$t + "-sm.jpg";
+
+
+}
+
+
+
+        hentData();
+
+    </script>
 </body>
 </html>

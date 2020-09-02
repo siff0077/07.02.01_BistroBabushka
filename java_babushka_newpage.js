@@ -43,6 +43,11 @@ function vis(menu) {
     })
 }
 
+function visNewPage(ret) {
+    console.log(ret);
+  location.href = `newpage.html?id=${ret.gsx$id.$t}`;
+
+}
 
 function addEventListenersToButtons() {
     document.querySelectorAll(".filter").forEach((btn) => {
@@ -67,11 +72,7 @@ function filterBTNs() {
 
 hentData();
 
-function visNewPage(ret) {
-    console.log(ret);
-  location.href = `newpage.html?id=${ret.gsx$id.$t}`;
 
-}
 
 
 
