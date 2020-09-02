@@ -1,0 +1,170 @@
+header {
+    display: flex;
+}
+
+#ret {
+    border: 1px solid #333;
+    padding: 10px;
+}
+
+img {
+    max-width: 30%;
+}
+
+
+
+.container {
+    width: 90vw;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+
+
+
+
+button {
+    align-items: center;
+    background-color: darkseagreen;
+    width: 120px;
+    height: 30px;
+    margin: 5px 5px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-color: darkseagreen;
+    padding: 1px 1px;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+footer h5 {
+    color: white;
+    line-height: 0.2pt;
+    margin-bottom: 15px;
+}
+
+footer a {
+    font-family: 'source_serif_proregular', sans-serif;
+    color: black;
+    text-decoration: none;
+}
+
+
+
+
+footer .footer_logo {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+}
+
+footer .footer_logo img {
+    display: flex;
+    width: 130px;
+    height: 80px;
+}
+
+
+
+footer .socialmedia {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+}
+
+footer .socialmedia img {
+    width: 140px;
+    height: 35px;
+}
+
+
+
+footer .contact {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+}
+
+
+
+/**************************New page vindue**********************/
+/**************************Start**********************/
+
+
+#popup {
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+}
+
+#popup article {
+    width: 80vw;
+    height: 80vh;
+    margin: 4rem auto;
+    background-color: darkseagreen;
+}
+
+#popup .luk {
+    position: fixed;
+    top: 0;
+    right: 1rem;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    padding: .1rem;
+    cursor: pointer;
+}
+
+/**************************New page vindue**********************/
+/**************************Slut**********************/
+
+
+
+
+
+
+/***********************************/
+/**************mediaQ***************/
+/***********************************/
+
+@media(min-width: 800px) {
+
+    footer {
+        display: flex;
+        flex-direction: row;
+        background-size: cover;
+        background-color: darkseagreen;
+        padding: 5px 60px;
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+
+    footer .socialmedia {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        padding-top: 50px;
+    }
+
+    footer .socialmedia img {
+        width: 35vw;
+        height: auto;
+    }
+}
+
+
+
