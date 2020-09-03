@@ -15,14 +15,21 @@
 
 
     <header>
+       <div class="overskrift"><h1>RESTAURANT BABUSHKA</h1></div>
+
+       <div class="buttons">
+
+       <div class="left">
         <button class="filter valgt" data-kategori="alle">ALLE</button>
         <button class="filter" data-kategori="forretter">FORRETTER</button>
         <button class="filter" data-kategori="hovedretter">HOVEDRETTER</button>
+        </div>
+        <div class="right">
         <button class="filter" data-kategori="desserter">DESSERTER</button>
         <button class="filter" data-kategori="sideorders">TILBEHØR</button>
         <button class="filter" data-kategori="drikkevarer">DRIKKEVARER</button>
-
-        <div class="overskrift"><h1>RESTAURANT BABUSHKA</h1></div>
+        </div>
+        </div>
     </header>
 
 
@@ -32,22 +39,25 @@
 
 
 
-     <h2 class="kategorinavn"></h2>
+     <h2 class="kategorinavn">MENU</h2>
     <section class="container"></section>
 
 
     <template>
         <article id="ret">
-            <img src="" alt="">
+           <div class="billede">
+               <img src="" alt=""></div>
+               <div class="info">
             <h2 class="navn"></h2>
             <p class="kort"></p>
             <p class="pris"></p>
+            </div>
         </article>
     </template>
 
        <section id="popup">
          <article>
-             <p class="luk">X</p>
+             <strong><p class="luk">X</p></strong>
              <img src="" alt="">
              <div class="detaljer">
                  <h2></h2>
